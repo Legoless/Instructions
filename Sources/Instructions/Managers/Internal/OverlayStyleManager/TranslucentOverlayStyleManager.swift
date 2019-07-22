@@ -145,7 +145,7 @@ class TranslucentOverlayStyleManager: OverlayStyleManager {
     private func configureCutoutMask(usingCutoutPath cutoutPath: UIBezierPath) {
         cutoutMaskLayer = CAShapeLayer()
         cutoutMaskLayer.name = "cutoutMaskLayer"
-        cutoutMaskLayer.fillRule = CAShapeLayerFillRule.evenOdd
+        cutoutMaskLayer.fillRule = .evenOdd
         cutoutMaskLayer.frame = overlayLayer.frame
 
         let cutoutMaskLayerPath = UIBezierPath()
@@ -158,7 +158,7 @@ class TranslucentOverlayStyleManager: OverlayStyleManager {
     private func configureFullMask() {
         fullMaskLayer = CAShapeLayer()
         fullMaskLayer.name = "fullMaskLayer"
-        fullMaskLayer.fillRule = CAShapeLayerFillRule.evenOdd
+        fullMaskLayer.fillRule = .evenOdd
         fullMaskLayer.frame = overlayLayer.frame
         fullMaskLayer.opacity = 1.0
 

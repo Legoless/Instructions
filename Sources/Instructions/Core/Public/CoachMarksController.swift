@@ -128,10 +128,11 @@ public extension CoachMarksController {
     /// Start instructions in the given context.
     ///
     /// - Parameter presentationContext: the context in which show Instructions
-    public func start(in presentationContext: PresentationContext) {
+
+    func start(in presentationContext: PresentationContext) {
         guard let dataSource = self.dataSource else {
             print("startOn: snap! you didn't setup any datasource, the" +
-                  "coach mark manager won't do anything.")
+                "coach mark manager won't do anything.")
             return
         }
 
@@ -141,7 +142,7 @@ public extension CoachMarksController {
         let numberOfCoachMarks = dataSource.numberOfCoachMarks(for: self)
         if numberOfCoachMarks <= 0 {
             print("startOn: the dataSource returned an invalid value for " +
-                  "numberOfCoachMarksForCoachMarksController(_:)")
+                "numberOfCoachMarksForCoachMarksController(_:)")
             return
         }
 
@@ -170,8 +171,8 @@ public extension CoachMarksController {
     /// Start displaying the coach marks.
     ///
     /// - Parameter parentViewController: View Controller to which attach self.
-    @available(iOS, deprecated: 1.3.0, message: "use start(in:) instead.")
-    public func start(on parentViewController: UIViewController) {
+    @available(iOS, deprecated: 1.2.1, message: "use start(in:) instead.")
+    func start(on parentViewController: UIViewController) {
 #if INSTRUCTIONS_APP_EXTENSIONS
         start(in: .currentWindow(of: parentViewController))
 #else
@@ -183,7 +184,7 @@ public extension CoachMarksController {
     /// viewWillDisappear.
     ///
     /// - Parameter immediately: `true` to stop immediately, without animations.
-    public func stop(immediately: Bool = false) {
+    func stop(immediately: Bool = false) {
         if immediately {
             flow.stopFlow(immediately: true, userDidSkip: false,
                           shouldCallDelegate: false) { [weak self] in
@@ -196,27 +197,12 @@ public extension CoachMarksController {
         }
     }
 
-    public func prepareForChange() {
+    func prepareForChange() {
         coachMarksViewController.prepareForChange()
     }
 
-    public func restoreAfterChangeDidComplete() {
+    func restoreAfterChangeDidComplete() {
         coachMarksViewController.restoreAfterChangeDidComplete()
-    }
-
-    /// Pause the display.
-    /// This method is expected to be used by the delegate to
-    /// stop the display, perform animation and resume display with `resume()`
-    @available(*, deprecated: 0.6.0, message: "Please use flow.pause() instead.")
-    func pause() {
-        flow.pause()
-    }
-
-    /// Resume the display.
-    /// If the display wasn't paused earlier, this method won't do anything.
-    @available(*, deprecated: 0.6.0, message: "Please use flow.resume() instead.")
-    func resume() {
-        flow.resume()
     }
 }
 
