@@ -47,6 +47,7 @@ extension CoachMarksController: CoachMarksControllerProxyDataSource {
 }
 
 extension CoachMarksController: CoachMarksControllerProxyDelegate {
+    
     func configureOrnaments(ofOverlay overlay: UIView) {
         delegate?.coachMarksController(self, configureOrnamentsOfOverlay: overlay)
     }
@@ -55,16 +56,6 @@ extension CoachMarksController: CoachMarksControllerProxyDelegate {
         guard let delegate = delegate else { return true }
 
         return delegate.coachMarksController(self, willLoadCoachMarkAt: index)
-    }
-
-    func willShow(coachMark: inout CoachMark, afterSizeTransition: Bool, at index: Int) {
-        delegate?.coachMarksController(self, willShow: &coachMark,
-                                       afterSizeTransition: afterSizeTransition, at: index)
-    }
-
-    func didShow(coachMark: CoachMark, afterSizeTransition: Bool, at index: Int) {
-        delegate?.coachMarksController(self, didShow: coachMark,
-                                       afterSizeTransition: afterSizeTransition, at: index)
     }
 
     func willShow(coachMark: inout CoachMark, beforeChanging change: ConfigurationChange,
