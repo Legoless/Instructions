@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
   name: "Instructions",
+  platforms: [.iOS(.v10)],
   products: [
         .library(name: "Instructions", targets: ["Instructions"]),
     ],
