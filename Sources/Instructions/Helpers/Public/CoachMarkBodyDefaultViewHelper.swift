@@ -99,7 +99,9 @@ open class CoachMarkBodyDefaultViewHelper {
         hint.textColor = UIColor.darkGray
         hint.font = UIFont.systemFont(ofSize: 15.0)
         hint.textAlignment = .justified
+        #if !targetEnvironment(macCatalyst)
         hint.layoutManager.hyphenationFactor = 1.0
+        #endif
         hint.isEditable = false
     }
 
